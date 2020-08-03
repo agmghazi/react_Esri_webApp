@@ -26,7 +26,7 @@ npm run build
 npm install @material-ui/core@4.11.0
 ```
 
-## material-ui/core 
+## material-ui/icons 
 ```
 npm install @material-ui/icons@4.9.1
 ```
