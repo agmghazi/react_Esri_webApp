@@ -19,3 +19,14 @@ npm start
 ```
 npm run build
 ```
+
+
+## material-ui/core 
+```
+npm install @material-ui/core@4.11.0
+```
+
+## material-ui/core 
+```
+npm install @material-ui/icons@4.9.1
+```
