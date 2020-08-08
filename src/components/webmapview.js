@@ -1,23 +1,18 @@
-import SceneView from "esri/views/SceneView";
+import MapView from "esri/views/MapView";
 import React from "react";
-
 
 export class WebMapComponent extends React.Component {
   componentDidMount() {
-    const view = new SceneView({
+    const view = new MapView({
       map: this.props.webmap,
-      container: this.mapDiv
+      container: this.mapDiv,
     });
     this.props.onload(view);
   }
 
   render() {
     return (
-      <div className="webmap"
-        ref={
-          element => this.mapDiv = element
-        }>
-      </div>
+      <div className="webmap" ref={(element) => (this.mapDiv = element)}></div>
     );
   }
 }

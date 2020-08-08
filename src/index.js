@@ -1,7 +1,7 @@
 import "./config";
 
 import FeatureLayer from "esri/layers/FeatureLayer";
-import WebMap from "esri/WebMap";
+import Map from "esri/Map";
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -16,7 +16,7 @@ const addDOMNode = () => {
   appNode.id = "app";
   document.body.appendChild(appNode);
   return appNode;
-}
+};
 
 const onComponentLoad = (view) => {
   featureLayer.when(() => {
@@ -26,29 +26,23 @@ const onComponentLoad = (view) => {
 
 const featureLayer = new FeatureLayer({
   id: "states",
-  portalItem: {
-    id: "b234a118ab6b4c91908a1cf677941702"
-  },
-  outFields: ["NAME", "STATE_NAME", "VACANT", "HSE_UNITS"],
-  title: "U.S. counties"
+  url:
+    "http://localhost:6080/arcgis/rest/services/DataWorker12/FeatureServer/2",
+  outFields: ["Name", "Zone", "Type"],
+  title: "U.S. counties",
 });
 
-const webmap = new WebMap({
-  portalItem: {
-    id: "3ff64504498c4e9581a7a754412b6a9e"
-  },
-  layers: [featureLayer]
+let map1 = new Map({
+  basemap: "streets",
+  layers: [featureLayer],
 });
-
 /**
  * React portion of application
+ * <Header appName="لوزاره الرياضة" />
  */
 ReactDOM.render(
   <div className="main">
-    <Header appName="Webpack App"/>
-    <WebMapComponent
-      webmap={webmap}
-      onload={onComponentLoad} />
+    <WebMapComponent webmap={map1} onload={onComponentLoad} />
   </div>,
   addDOMNode()
 );
