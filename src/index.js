@@ -8,9 +8,11 @@ import ReactDOM from "react-dom";
 
 import { Header } from "./components/header";
 import { WebMapComponent } from "./components/webmapview";
+import GraphicsLayer from "esri/layers/GraphicsLayer";
 
 import "./css/main.scss";
 
+const layer = new GraphicsLayer();
 const addDOMNode = () => {
   const appNode = document.createElement("div");
   appNode.id = "app";
@@ -34,7 +36,7 @@ const featureLayer = new FeatureLayer({
 
 let map1 = new Map({
   basemap: "streets",
-  layers: [featureLayer],
+  layers: [featureLayer, layer],
 });
 /**
  * React portion of application
@@ -42,7 +44,7 @@ let map1 = new Map({
  */
 ReactDOM.render(
   <div className="main">
-    <WebMapComponent webmap={map1} onload={onComponentLoad} />
+    <WebMapComponent webmap={map1} layer={layer} onload={onComponentLoad} />
   </div>,
   addDOMNode()
 );
