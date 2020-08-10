@@ -65,3 +65,28 @@ header.top-nav {
     margin: 0;
   }
 }
+
+#Navigationtools {
+  text-align: center;
+}
+.tool {
+  padding-top: 3px;
+  padding: 4px 2px;
+}
+.Navigationtool.disabled,
+.Navigationtool.disabled:hover {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.Navigationtool:hover,
+.Navigationtool.selected:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.Navigationtool.selected {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.Navigationtool {
+  height: 20px;
+  width: 20px;
+  margin: 0.3em;
+}
